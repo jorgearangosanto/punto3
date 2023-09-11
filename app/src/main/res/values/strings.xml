@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Masa</string>
+    <string name="info">CALCULADORA DE INDICE DE MASA</string>
+    <string name="height">"ingrese altura "</string>
+    <string name="weight">ingrese peso</string>
+    <string name="calculate">"calcular indice "</string>
+    <string name="date">ingrese fecha</string>
+    <string name="city">ciudad de nacimiento</string>
+</resources>
