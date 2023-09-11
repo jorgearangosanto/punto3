@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.santo.masa.databinding.ActivityMainBinding
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
@@ -14,12 +15,14 @@ class MainActivity : AppCompatActivity() {
 
 
     private lateinit var mainbinding: ActivityMainBinding
+    private lateinit var mainviewModel: MainViewModel
     private var fechaNacimiento: String = ""
     private var cal= Calendar.getInstance()
 ////guardando practica 2
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainbinding = ActivityMainBinding.inflate(layoutInflater)
+        mainviewModel = ViewModelProvider(this)[MainViewModel::class.java]
         val view = mainbinding.root
         setContentView(view)
 
@@ -61,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                     append(" su imc ")
                     append(df.format(imc))
                 }
+                mainviewModel.recomendacion(imc )
                 if (imc< 18.5) mainbinding.recomendacionTextView3.text = ("bien")
                 if (imc>=18.5 && imc<24.9) mainbinding.recomendacionTextView3.text = ("buen peso")
                 if (imc>=24.9 && imc<29.9) mainbinding.recomendacionTextView3.text = ("sobrepeso")
@@ -77,10 +81,15 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+    mainviewModel.validateNunber(mainbinding.alturaInputEditex.text.toString(),mainbinding.pesoInputEditex.text.toString())
+
+
 
 
     }
+
     private fun validateEmpty() =
         mainbinding.alturaInputEditex.text.toString().isEmpty() || mainbinding.pesoInputEditex.text.toString()
             .isEmpty()
 }
+
