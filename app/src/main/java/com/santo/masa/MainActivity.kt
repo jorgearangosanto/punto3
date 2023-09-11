@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mainbinding: ActivityMainBinding
     private var fechaNacimiento: String = ""
     private var cal= Calendar.getInstance()
-
+////guardando practica 2
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainbinding = ActivityMainBinding.inflate(layoutInflater)
