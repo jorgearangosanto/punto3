@@ -10,6 +10,7 @@ import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.pow
+import androidx.lifecycle.Observer
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,6 +51,10 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        val recomendacioObserver= Observer<String>{
+            mainbinding.pesoInputEditex.text.toString().toDouble()
+
+        }
 
 
 
@@ -81,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 
 
         }
-    mainviewModel.validateNunber(mainbinding.alturaInputEditex.text.toString(),mainbinding.pesoInputEditex.text.toString())
+    //mainviewModel.validateNunber(mainbinding.alturaInputEditex.text.toString(),mainbinding.pesoInputEditex.text.toString())
 
 
 
