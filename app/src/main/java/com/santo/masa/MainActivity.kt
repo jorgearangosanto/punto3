@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import com.santo.masa.databinding.ActivityMainBinding
 import java.text.DecimalFormat
@@ -51,17 +52,62 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        val recomendacioObserver= Observer<String>{
+        /*val recomendacioObserver= Observer<String>{
             mainbinding.pesoInputEditex.text.toString().toDouble()
 
-        }
+        }*/
 
+
+    val imcobserver = Observer<Double>{imc->
+        mainbinding.resultadoTextView2.setText(imc.toString())
+    }
+
+    mainviewModel.imc.observe(this,imcobserver)
+
+
+    val mensaje1observer = Observer<String>{mensaje1->
+        mainbinding.recomendacionTextView3.setText(mensaje1.toString())
+    }
+    mainviewModel.mensaje1.observe(this,mensaje1observer)
+
+
+    val mensaje2observer = Observer<String>{mensaje2->
+        mainbinding.recomendacionTextView3.setText(mensaje2.toString())
+
+    }
+    mainviewModel.mensaje2.observe(this,mensaje2observer)
+
+    val mensaje3observer = Observer<String>{mensaje3->
+        mainbinding.recomendacionTextView3.setText(mensaje3.toString())
+
+    }
+    mainviewModel.mensaje3.observe(this,mensaje3observer)
+
+    val mensaje4observer = Observer<String>{mensaje4->
+        mainbinding.recomendacionTextView3.setText(mensaje4.toString())
+
+    }
+    mainviewModel.mensaje4.observe(this,mensaje4observer)
+
+    val mensaje5observer = Observer<String>{mensaje5->
+        mainbinding.recomendacionTextView3.setText(mensaje5.toString())
+
+    }
+    mainviewModel.mensaje5.observe(this,mensaje5observer)
 
 
         val df = DecimalFormat("#.#")
 
         mainbinding.calcularButton.setOnClickListener {
-            if (!validateEmpty()){
+            mainviewModel.validateNunber(mainbinding.alturaInputEditex.text.toString(),mainbinding.pesoInputEditex.text.toString())
+
+            mainviewModel.recomendacion(imcobserver.toString())
+            mainbinding.resultadoTextView2.text =imcobserver.toString() //buildString {
+                //append(" su imc ")
+                //append(df.format(imcobserver.toString()))
+            //}
+
+            /*if (!validateEmpty()){
                 val peso = mainbinding.pesoInputEditex.text.toString().toDouble()
                 val altura = mainbinding.alturaInputEditex.text.toString().toDouble()
                 val imc = peso/ altura.pow(2)
@@ -69,7 +115,7 @@ class MainActivity : AppCompatActivity() {
                     append(" su imc ")
                     append(df.format(imc))
                 }
-                mainviewModel.recomendacion(imc )
+               // mainviewModel.recomendacion(imc )
                 if (imc< 18.5) mainbinding.recomendacionTextView3.text = ("bien")
                 if (imc>=18.5 && imc<24.9) mainbinding.recomendacionTextView3.text = ("buen peso")
                 if (imc>=24.9 && imc<29.9) mainbinding.recomendacionTextView3.text = ("sobrepeso")
@@ -81,7 +127,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-            }
+            }*/
 
 
 
@@ -93,8 +139,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun validateEmpty() =
+   /* private fun validateEmpty() =
         mainbinding.alturaInputEditex.text.toString().isEmpty() || mainbinding.pesoInputEditex.text.toString()
-            .isEmpty()
+            .isEmpty()*/
+
+
+
 }
 
