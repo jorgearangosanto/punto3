@@ -39,6 +39,8 @@ class MainViewModel : ViewModel() {
             val altura = number1.toDouble()
 
              imc.value = peso / altura.pow(2)
+            Log.d( "button" , "clicked")
+
         }
 
 
@@ -46,10 +48,12 @@ class MainViewModel : ViewModel() {
 
     fun recomendacion(number1: String) {
         val imc = number1.toDouble()
-        if (imc < 18.5) mensaje1.value = "bien"
-        if (imc >= 18.5 && imc < 24.9) mensaje2.value = "buen peso"
-        if (imc >= 24.9 && imc < 29.9) mensaje1.value = "sobrepeso"
-        if (imc >= 29.9)  mensaje1.value="obeso"
+        if (imc < 18.5) {mensaje1.value = "bien"}
+        if (imc >= 18.5 && imc < 24.9) {mensaje2.value = "buen peso"}
+        if (imc >= 24.9 && imc < 29.9) {mensaje1.value = "sobrepeso"}
+        if (imc >= 29.9)  {mensaje1.value="obeso"}
+
+
 
 
 

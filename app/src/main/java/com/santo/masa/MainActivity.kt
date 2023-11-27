@@ -96,16 +96,18 @@ class MainActivity : AppCompatActivity() {
     mainviewModel.mensaje5.observe(this,mensaje5observer)
 
 
+
+
         val df = DecimalFormat("#.#")
 
         mainbinding.calcularButton.setOnClickListener {
             mainviewModel.validateNunber(mainbinding.alturaInputEditex.text.toString(),mainbinding.pesoInputEditex.text.toString())
 
-            mainviewModel.recomendacion(imcobserver.toString())
-            mainbinding.resultadoTextView2.text =imcobserver.toString() //buildString {
-                //append(" su imc ")
-                //append(df.format(imcobserver.toString()))
-            //}
+            //mainviewModel.recomendacion(imcobserver.toString())
+            mainbinding.resultadoTextView2.text = imcobserver.toString()/*buildString {
+                append(" su imc ")
+                append(df.format(df.format(imcobserver.toString())))
+            }*/
 
             /*if (!validateEmpty()){
                 val peso = mainbinding.pesoInputEditex.text.toString().toDouble()
